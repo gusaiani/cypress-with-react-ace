@@ -7,6 +7,19 @@ describe("App", function() {
   });
 
   it("renders the app", function() {
-    cy.get(".App-link").should("contain", "Learn React");
+    cy.get(".ace_text-input")
+      .first()
+      .focus()
+      .type("foo bar");
+
+    // A forced way to blur from AceEditor
+    cy.get("h1")
+      .first()
+      .click();
+
+    cy.get(".ace_text-input")
+      .first()
+      .focus()
+      .type(" another thing typed into the editor");
   });
 });
